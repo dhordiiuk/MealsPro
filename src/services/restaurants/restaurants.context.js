@@ -30,7 +30,6 @@ export const RestaurantsContextProvider = ({ children }) => {
                     setError(err);
                 });
         }, 2000);
-        console.log('restaurants', restaurants);
     };
     useEffect(() => {
         if (location) {
