@@ -1,21 +1,15 @@
-import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
-import { ThemeProvider } from "styled-components/native";
+import {StatusBar as ExpoStatusBar} from "expo-status-bar";
+import React from "react";
+import {ThemeProvider} from "styled-components/native";
 import {initializeApp} from "firebase/app";
 
-import {
-    useFonts as useOswald,
-    Oswald_400Regular,
-} from "@expo-google-fonts/oswald";
-import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import {Oswald_400Regular, useFonts as useOswald,} from "@expo-google-fonts/oswald";
+import {Lato_400Regular, useFonts as useLato} from "@expo-google-fonts/lato";
 
-import { theme } from "./src/infrastructure/theme";
-import { Navigation } from "./src/infrastructure/navigation";
+import {theme} from "./src/infrastructure/theme";
+import {Navigation} from "./src/infrastructure/navigation";
 
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
-import { AuthenticationContextProvider } from "./src/services/authentification/authentication.context";
+import {AuthenticationContextProvider} from "./src/services/authentification/authentication.context";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBJXg_hQTwq8Y2w6zVRmsBrHd7Ez0loNOY",
@@ -46,16 +40,10 @@ export default function App() {
         <>
             <ThemeProvider theme={theme}>
                 <AuthenticationContextProvider>
-                    <FavouritesContextProvider>
-                        <LocationContextProvider>
-                            <RestaurantsContextProvider>
-                                <Navigation />
-                            </RestaurantsContextProvider>
-                        </LocationContextProvider>
-                    </FavouritesContextProvider>
+                    <Navigation/>
                 </AuthenticationContextProvider>
             </ThemeProvider>
-            <ExpoStatusBar style="auto" />
+            <ExpoStatusBar style="auto"/>
         </>
     );
 }
